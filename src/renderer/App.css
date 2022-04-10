@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    position: relative;
+    color: rgb(112, 112, 112);
+    height: 100vh;
+    background: linear-gradient(200.96deg,
+            #ffffff -29.09%,
+            #eaf2ff 51.77%,
+            #dfddff 129.35%);
+    font-family: sans-serif;
+    overflow-y: hidden;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    background-color: #3182CE;
+}
+
+.banner .logo {
+    color: white;
+}
+
+.content {
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.content .patient-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.content .patient-list .patient-item {
+    display: flex;
+    align-items: center;
+    gap: 0 12px;
+}
+
+.content .patient-list .patient-item .time {
+    color: white;
+    background-color: #3182CE;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.content .patient-list .patient-item .full-name {
+    display: flex;
+    gap: 8px;
+}
