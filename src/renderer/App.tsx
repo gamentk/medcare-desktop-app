@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 import useMQTT from './hooks/useMQTT';
 import './App.css';
 
 const Hello = () => {
-    const [mac, setMac] = useState<string>('');
+    const [mac, setMac] = useState<string | undefined>();
     
-    useMQTT(onMessage);
+    useMQTT(mac, onMessage);
     window.electron.ipcRenderer.once('ipc-example', (arg) => {
   // eslint-disable-next-line no-console
         console.log(arg);
@@ -15,9 +15,7 @@ const Hello = () => {
     });
     window.electron.ipcRenderer.myPing();
 
-    console.log('mac ->', mac)
-
-    function onMessage(topic: string, message: string) {
+    function onMessage(_: string, message: string) {
         console.log(message)
         // window.electron.ipcRenderer.callPython(Number(message));
     }
