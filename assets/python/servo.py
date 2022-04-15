@@ -1,14 +1,11 @@
 import RPi.GPIO as GPIO
 
+GPIO_SERVO = 11
 
-def init(pin):
-    GPIO_SERVO = pin
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(GPIO_SERVO, GPIO.OUT)
 
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(GPIO_SERVO, GPIO.OUT)
-
-    global servo
-    servo = GPIO.PWM(GPIO_SERVO, 50)
+servo = GPIO.PWM(GPIO_SERVO, 50)
 
 
 def start():

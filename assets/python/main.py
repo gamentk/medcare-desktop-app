@@ -7,7 +7,6 @@ import servo
 if __name__ == '__main__':
     try:
         while True:
-            servo.init(11)
             servo.start()
 
             dist = distance()
