@@ -5,8 +5,8 @@ contextBridge.exposeInMainWorld('electron', {
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
     },
-    callPython() {
-      ipcRenderer.send('ipc-call-python', 'python was called');
+    callPython(slot: number) {
+      ipcRenderer.send('ipc-call-python', slot);
     },
     on(channel: string, func: (...args: unknown[]) => void) {
       const validChannels = ['ipc-example'];

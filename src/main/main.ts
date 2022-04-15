@@ -15,6 +15,8 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { spawn } from 'child_process';
+import os from 'os';
+import getmac from 'getmac';
 
 export default class AppUpdater {
   constructor() {
@@ -29,12 +31,12 @@ let mainWindow: BrowserWindow | null = null;
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
+  event.reply('ipc-example', getmac());
 });
 
 ipcMain.on('ipc-call-python', async (event, arg) => {
-  const child = spawn('python', ['assets/python/hello.py']);
-  console.log('spawn');
+  const child = spawn('python', ['assets/python/hello.py', arg]);
+  
   child.stdout.on('data', (data) => console.log(data.toString()));
   child.stderr.on('data', (data) => console.log(data.toString()));
 });
@@ -83,6 +85,7 @@ const createWindow = async () => {
     height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
+      nodeIntegration: true,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
