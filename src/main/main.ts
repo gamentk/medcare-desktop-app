@@ -34,7 +34,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('ipc-call-python', async (_, arg) => {
-  spawn('python', ['assets/python/hello.py', arg]);
+  spawn('python', ['assets/python/main.py', arg]);
   
   // child.stdout.on('data', (data) => console.log(data.toString()));
   // child.stderr.on('data', (data) => console.log(data.toString()));
