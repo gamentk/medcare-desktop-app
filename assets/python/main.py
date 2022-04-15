@@ -1,9 +1,10 @@
+import sys
 import RPi.GPIO as GPIO
 import time
 
 from ultrasonic import distance
 
-GPIO_SERVO = int('11')
+GPIO_SERVO = int(sys.argv[1])
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(GPIO_SERVO, GPIO.OUT)
