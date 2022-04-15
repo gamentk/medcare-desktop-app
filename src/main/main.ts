@@ -34,10 +34,10 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('ipc-call-python', async (_, arg) => {
-  const child = spawn('python', ['assets/python/hello.py', arg]);
+  spawn('python', ['assets/python/hello.py', arg]);
   
-  child.stdout.on('data', (data) => console.log(data.toString()));
-  child.stderr.on('data', (data) => console.log(data.toString()));
+  // child.stdout.on('data', (data) => console.log(data.toString()));
+  // child.stderr.on('data', (data) => console.log(data.toString()));
 });
 
 if (process.env.NODE_ENV === 'production') {
