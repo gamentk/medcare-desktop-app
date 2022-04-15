@@ -2,7 +2,23 @@ import RPi.GPIO as GPIO
 import time
 
 from ultrasonic import distance
-import servo
+
+GPIO_SERVO = int('11')
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(GPIO_SERVO, GPIO.OUT)
+
+servo = GPIO.PWM(GPIO_SERVO, 50)
+
+
+def start():
+    servo.start(2)
+    servo.ChangeDutyCycle(2)
+
+
+def stop():
+    servo.stop()
+
 
 if __name__ == '__main__':
     try:
