@@ -29,7 +29,7 @@ if __name__ == '__main__':
             dist = distance()
             print("%.1f" % dist)
 
-            if dist <= 4:
+            if dist <= 5.5:
                 stop()
                 break
 
