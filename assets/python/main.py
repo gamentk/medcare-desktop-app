@@ -23,13 +23,13 @@ def stop():
 if __name__ == '__main__':
     try:
         while True:
-            servo.start()
+            start()
 
             dist = distance()
             print("%.1f" % dist)
 
             if dist <= 4:
-                servo.stop()
+                stop()
                 break
 
             time.sleep(0.03)
