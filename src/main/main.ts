@@ -15,7 +15,6 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { spawn } from 'child_process';
-import os from 'os';
 import getmac from 'getmac';
 
 export default class AppUpdater {
@@ -34,7 +33,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', getmac());
 });
 
-ipcMain.on('ipc-call-python', async (event, arg) => {
+ipcMain.on('ipc-call-python', async (_, arg) => {
   const child = spawn('python', ['assets/python/hello.py', arg]);
   
   child.stdout.on('data', (data) => console.log(data.toString()));

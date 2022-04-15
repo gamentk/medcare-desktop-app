@@ -16,8 +16,9 @@ const Hello = () => {
     window.electron.ipcRenderer.myPing();
 
     function onMessage(_: string, message: string) {
-        console.log(message)
-        // window.electron.ipcRenderer.callPython(Number(message));
+        console.log('Slot ->', message);
+
+        window.electron.ipcRenderer.callPython(Number(message));
     }
     
     return (
