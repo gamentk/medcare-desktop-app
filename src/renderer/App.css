@@ -80,6 +80,7 @@ body {
 .content .patient-list .patient-item .time {
     color: white;
     font-weight: 400;
+    font-size: 24px;
     background-color: #3182CE;
     text-align: center;
     letter-spacing: 2px;
@@ -90,5 +91,6 @@ body {
 
 .content .patient-list .patient-item .full-name {
     display: flex;
+    font-size: 20px;
     gap: 8px;
 }
