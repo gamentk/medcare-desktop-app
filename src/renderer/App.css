@@ -34,18 +34,32 @@ body {
 .content {
     height: 85vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 100px;
+}
+
+.content .main {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
+    align-items: center;
+}
+
+.content .appointments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content .timer {
+    color: #3182CE;
     letter-spacing: 2px;
     font-size: xx-large;
 }
 
 .content .mac-address {
+    color: #3182CE;
     letter-spacing: 2px;
     font-weight: 500;
 }

@@ -126,29 +126,34 @@ const Hello = () => {
                 <h1 className="logo">MEDCARE</h1>
             </div>
             <div className="content">
-                <h1 className="timer">{currentDate && currentDate.toLocaleTimeString('th-Th')}</h1>
-                <h1 className="mac-address">{mac && mac}</h1>
-                <QRCode
-                    value="Test"
-                    size={200}
-                />
-                <ul className="patient-list">
-                    {
-                        appointments
-                        && appointments.map(appointment => (
-                            <li 
-                                key={appointment.apmt_id} 
-                                className="patient-item"
-                            >
-                                <h4 className="time">{appointment.apmt_time}</h4>
-                                <div className="full-name">
-                                    <span>{appointment.u_first_name}</span>
-                                    <span>{appointment.u_last_name}</span>
-                                </div>
-                            </li>
-                        ))
-                    }
-                </ul>
+                <div className="main">
+                    <h1 className="timer">{currentDate && currentDate.toLocaleTimeString('th-Th')}</h1>
+                    <h1 className="mac-address">{mac && mac}</h1>
+                    <QRCode
+                        value="/v1/appointments/getpill"
+                        size={300}
+                        bgColor="#ffffff"
+                    />
+                </div>
+                <div className="appointments">
+                    <ul className="patient-list">
+                        {
+                            appointments
+                            && appointments.map(appointment => (
+                                <li 
+                                    key={appointment.apmt_id} 
+                                    className="patient-item"
+                                >
+                                    <h4 className="time">{appointment.apmt_time}</h4>
+                                    <div className="full-name">
+                                        <span>{appointment.u_first_name}</span>
+                                        <span>{appointment.u_last_name}</span>
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     );
