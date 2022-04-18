@@ -40,6 +40,11 @@ ipcMain.on('ipc-call-python', async (_, arg) => {
   // child.stderr.on('data', (data) => console.log(data.toString()));
 });
 
+ipcMain.on('ipc-call-tts', async (_, arg) => {
+  spawn('python', ['assets/python/tts.py', arg]);
+  // child.stdout.on('data', (data) => console.log(data.toString()));
+});
+
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
   sourceMapSupport.install();

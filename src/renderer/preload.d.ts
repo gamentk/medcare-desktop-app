@@ -4,6 +4,7 @@ declare global {
       ipcRenderer: {
         myPing(): void;
         callPython(slot: number): void;
+        callTTS(message: any): void;
         on(
           channel: string,
           func: (...args: unknown[]) => void

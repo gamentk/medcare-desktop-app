@@ -8,6 +8,9 @@ contextBridge.exposeInMainWorld('electron', {
     callPython(slot: number) {
       ipcRenderer.send('ipc-call-python', slot);
     },
+    callTTS(message: any) {
+      ipcRenderer.send('ipc-call-tts', message);
+    },
     on(channel: string, func: (...args: unknown[]) => void) {
       const validChannels = ['ipc-example'];
       if (validChannels.includes(channel)) {

@@ -11,12 +11,21 @@ const useMQTT = (mac: string | undefined, messageCallback: (topic: string, messa
 
             client.on('connect', () => {
                 const GETPILL = `MEDCARE/GETPILL/${mac}`;
+                const PING = `MEDCARE/PING`;
                 
                 client.subscribe(GETPILL, (error: any) => {
                     if (!error) {
                         console.log(`Subscribe to ${GETPILL}`);
                     } else {
                         console.log(`Cannot subscribe to ${GETPILL}`);
+                    }
+                });
+
+                client.subscribe(PING, (error: any) => {
+                    if (!error) {
+                        console.log(`Subscribe to ${PING}`);
+                    } else {
+                        console.log(`Cannot subscribe to ${PING}`);
                     }
                 });
             });
@@ -37,6 +46,8 @@ const useMQTT = (mac: string | undefined, messageCallback: (topic: string, messa
             }
         }
     }, [mac]);
+
+    return client;
 }
 
 export default useMQTT;
