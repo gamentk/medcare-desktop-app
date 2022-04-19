@@ -27,6 +27,15 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
+// TODO MAGIC BUTTON
+function callPython() {
+  let process;
+  
+  return async (_: any, arg: any) => {
+    spawn('python', ['assets/python/main.py', arg]);
+  }
+}
+
 ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));

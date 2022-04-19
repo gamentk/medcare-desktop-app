@@ -29,11 +29,11 @@ if __name__ == '__main__':
             dist = distance()
             print("%.1f" % dist)
 
-            if dist <= 5.5:
+            if dist <= 3 and dist != 0:
                 stop()
                 break
 
-            time.sleep(0.03)
+            time.sleep(0.05)
 
         GPIO.cleanup()
     except KeyboardInterrupt:
