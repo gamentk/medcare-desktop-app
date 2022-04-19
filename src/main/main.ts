@@ -35,7 +35,7 @@ function callPython() {
     switch (arg.action) {
       case 'START':
         console.log('START');
-        process = spawn('python', ['assets/python/hello.py', arg.payload]);
+        process = spawn('python', ['assets/python/main.py', arg.payload]);
 
         break;
       case 'STOP':
