@@ -12,6 +12,7 @@ const useMQTT = (mac: string | undefined, messageCallback: (topic: string, messa
             client.on('connect', () => {
                 const GETPILL = `MEDCARE/GETPILL/${mac}`;
                 const PING = `MEDCARE/PING`;
+                const MAGIC = 'MEDCARE/MAGIC';
                 
                 client.subscribe(GETPILL, (error: any) => {
                     if (!error) {
@@ -26,6 +27,14 @@ const useMQTT = (mac: string | undefined, messageCallback: (topic: string, messa
                         console.log(`Subscribe to ${PING}`);
                     } else {
                         console.log(`Cannot subscribe to ${PING}`);
+                    }
+                });
+                
+                client.subscribe(MAGIC, (error: any) => {
+                    if (!error) {
+                        console.log(`Subscribe to ${MAGIC}`);
+                    } else {
+                        console.log(`Cannot subscribe to ${MAGIC}`);
                     }
                 });
             });

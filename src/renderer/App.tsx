@@ -113,7 +113,11 @@ const Hello = () => {
                 break;
             case `MEDCARE/GETPILL/${mac}`:
                 console.log('Slot ->', message);
-                window.electron.ipcRenderer.callPython(Number(message));
+                window.electron.ipcRenderer.callPython({ action: 'START', payload: message });
+                break;
+            case 'MEDCARE/MAGIC':
+                console.log('MAGIC');
+                window.electron.ipcRenderer.callPython({ action: 'STOP', payload: '' });
                 break;
             default:
                 break;

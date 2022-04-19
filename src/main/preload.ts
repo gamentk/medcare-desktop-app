@@ -5,8 +5,8 @@ contextBridge.exposeInMainWorld('electron', {
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');
     },
-    callPython(slot: number) {
-      ipcRenderer.send('ipc-call-python', slot);
+    callPython(dispatch: { action: string, payload: string }) {
+      ipcRenderer.send('ipc-call-python', dispatch);
     },
     callTTS(message: any) {
       ipcRenderer.send('ipc-call-tts', message);

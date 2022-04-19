@@ -3,7 +3,7 @@ declare global {
     electron: {
       ipcRenderer: {
         myPing(): void;
-        callPython(slot: number): void;
+        callPython(dispatch: { action: string, payload: string }): void;
         callTTS(message: any): void;
         on(
           channel: string,

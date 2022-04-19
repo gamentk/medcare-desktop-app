@@ -29,10 +29,24 @@ let mainWindow: BrowserWindow | null = null;
 
 // TODO MAGIC BUTTON
 function callPython() {
-  let process;
+  let process: any;
   
-  return async (_: any, arg: any) => {
-    spawn('python', ['assets/python/main.py', arg]);
+  return async (_: any, arg: { action: string, payload: string}) => {
+    switch (arg.action) {
+      case 'START':
+        console.log('START');
+        process = spawn('python', ['assets/python/hello.py', arg.payload]);
+
+        break;
+      case 'STOP':
+        try {
+          console.log('STOP');
+          process.kill('SIGINT');
+        } catch {
+          console.log("It's undefined");
+        }
+        break;
+    }
   }
 }
 
@@ -42,12 +56,11 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', getmac());
 });
 
-ipcMain.on('ipc-call-python', async (_, arg) => {
-  spawn('python', ['assets/python/main.py', arg]);
-  
-  // child.stdout.on('data', (data) => console.log(data.toString()));
-  // child.stderr.on('data', (data) => console.log(data.toString()));
-});
+// ipcMain.on('ipc-call-python', async (_, arg) => {
+//   spawn('python', ['assets/python/main.py', arg]);
+// });
+
+ipcMain.on('ipc-call-python', callPython());
 
 ipcMain.on('ipc-call-tts', async (_, arg) => {
   spawn('python', ['assets/python/tts.py', arg]);
