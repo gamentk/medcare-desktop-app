@@ -32,10 +32,17 @@ function callPython() {
   let process: any;
   
   return async (_: any, arg: { action: string, payload: string}) => {
+    const slots: any = {
+      '1': 11,
+      '2': 13,
+      '3': 15,
+      '4': 29
+    };
+    
     switch (arg.action) {
       case 'START':
         console.log('START');
-        process = spawn('python', ['assets/python/main.py', arg.payload]);
+        process = spawn('python', ['assets/python/main.py', slots[arg.payload]]);
 
         break;
       case 'STOP':
